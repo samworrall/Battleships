@@ -14,11 +14,11 @@ class Battleship
     @hits == @size
   end
 
-  def self.Cruiser
-    self.new(5)
+  def self.cruiser
+    new(5)
   end
 
-  def self.Battleship
-    self.new(4)
+  def self.battleship
+    new(4)
   end
 end

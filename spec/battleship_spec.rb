@@ -32,7 +32,7 @@ describe Battleship do
   end
 
   context 'The battleship is a Carrier' do
-    let(:subject) { Battleship.Cruiser }
+    let(:subject) { Battleship.cruiser }
 
     describe '#size' do
       it 'Returns 5' do
@@ -42,7 +42,7 @@ describe Battleship do
   end
 
   context 'The battleship is a Battleship' do
-    let(:subject) { Battleship.Battleship }
+    let(:subject) { Battleship.battleship }
 
     describe '#size' do
       it 'Returns 4' do
