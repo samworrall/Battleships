@@ -29,4 +29,8 @@ class Battleship
   def self.submarine
     new(3)
   end
+
+  def self.destroyer
+    new(2)
+  end
 end
