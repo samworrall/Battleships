@@ -19,4 +19,15 @@ describe Battleship do
       expect { subject.take_hit }.to change { subject.hits }.by(1)
     end
   end
+
+  describe '#destroyed?' do
+    it 'Returns false' do
+      expect(subject.destroyed?).to eq(false)
+    end
+
+    it 'Returns true' do
+      3.times { subject.take_hit }
+      expect(subject.destroyed?).to eq(true)
+    end
+  end
 end

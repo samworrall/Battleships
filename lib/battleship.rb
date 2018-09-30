@@ -9,4 +9,8 @@ class Battleship
   def take_hit
     @hits += 1
   end
+
+  def destroyed?
+    @hits == @size
+  end
 end
