@@ -32,7 +32,7 @@ describe Battleship do
   end
 
   context 'The battleship is a Carrier' do
-    let(:subject) { Battleship.cruiser }
+    let(:subject) { Battleship.carrier }
 
     describe '#size' do
       it 'Returns 5' do
@@ -50,4 +50,14 @@ describe Battleship do
       end
     end
   end
+
+  # context 'The battleship is a Battleship' do
+  #   let(:subject) { Battleship.battleship }
+  #
+  #   describe '#size' do
+  #     it 'Returns 4' do
+  #       expect(subject.size).to eq(4)
+  #     end
+  #   end
+  # end
 end
