@@ -4,4 +4,8 @@ class Ocean
   def initialize
     @hit = false
   end
+
+  def take_hit
+    @hit = true
+  end
 end
