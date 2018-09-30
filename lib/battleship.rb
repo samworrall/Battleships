@@ -21,4 +21,8 @@ class Battleship
   def self.battleship
     new(4)
   end
+
+  def self.cruiser
+    new(3)
+  end
 end
