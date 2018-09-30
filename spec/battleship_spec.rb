@@ -13,4 +13,10 @@ describe Battleship do
       expect(subject.hits).to eq(0)
     end
   end
+
+  describe '#take_hit' do
+    it 'Increases the ship hits attribute by 1' do
+      expect { subject.take_hit }.to change { subject.hits }.by(1)
+    end
+  end
 end
