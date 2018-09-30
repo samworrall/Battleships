@@ -30,4 +30,14 @@ describe Battleship do
       expect(subject.destroyed?).to eq(true)
     end
   end
+
+  context 'The battleship is a Carrier' do
+    let(:subject) { Battleship.Cruiser }
+
+    describe '#size' do
+      it 'Returns 5' do
+        expect(subject.size).to eq(5)
+      end
+    end
+  end
 end

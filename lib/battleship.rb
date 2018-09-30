@@ -13,4 +13,8 @@ class Battleship
   def destroyed?
     @hits == @size
   end
+
+  def self.Cruiser
+    self.new(5)
+  end
 end
