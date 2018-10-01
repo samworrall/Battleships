@@ -1,9 +1,11 @@
 require 'cell'
 
 describe Cell do
+  let(:subject) { Cell.new(ocean) }
+  let(:ocean) { double :ocean }
   describe '#content' do
-    it 'Returns nil upon initialisation' do
-      expect(subject.content).to eq(nil)
+    it 'Returns ocean upon initialisation' do
+      expect(subject.content).to eq(ocean)
     end
   end
 end
