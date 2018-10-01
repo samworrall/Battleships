@@ -1,8 +1,11 @@
 require 'board'
 
 describe Board do
-  let(:subject) { Board.new(cell) }
-  let(:cell) { spy :cell }
+  let(:subject) { Board.new(cell_class) }
+  let(:cell_class) { spy :cell_class, new: cell}
+  let(:cell) { double :cell, content: ocean, :content= => nil  }
+  let(:ocean) { double :ocean }
+  let(:battleship) { double :battleship, size: 3 }
 
   describe '#grid', :grid do
     it 'Returns an empty hash upon initialisation' do
@@ -19,7 +22,19 @@ describe Board do
 
     it 'Calls new on Cell 100 times' do
       subject.construct_grid
-      expect(cell).to have_received(:new).exactly(100).times
+      expect(cell_class).to have_received(:new).exactly(100).times
+    end
+  end
+
+  describe '#place_ship', :place_ship do
+    it 'Takes 3 arguments' do
+      expect(subject).to respond_to(:place_ship).with(3).arguments
+    end
+
+    it 'Replaces cells A1, B1, and C1 content with a ship' do
+      subject.construct_grid
+      subject.place_ship("A1", battleship, "vertical")
+      expect(cell).to have_received(:content=).with(battleship)
     end
   end
 end

@@ -16,4 +16,8 @@ class Board
     end
   end
 
+  def place_ship(coord, ship, orientation)
+    @grid[coord].content = ship
+  end
+
 end
