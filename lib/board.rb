@@ -20,13 +20,14 @@ class Board
     @grid[coord].content = ship
     @keys = @grid.keys
     @index = @grid.find_index { |k,| k == coord }
-    orientation == "vertical" ? place_vertically(ship) : place_horizontally(ship)
+    orientation == "vertical" ?
+    place_vertically(ship) : place_horizontally(ship)
   end
 
   private
 
   def place_vertically(ship)
-    (1...ship.size).each { |n| @grid[@keys[@index + n*10]].content = ship }
+    (1...ship.size).each { |n| @grid[@keys[@index + n * 10]].content = ship }
   end
 
   def place_horizontally(ship)

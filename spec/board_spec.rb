@@ -2,8 +2,8 @@ require 'board'
 
 describe Board do
   let(:subject) { Board.new(cell_class) }
-  let(:cell_class) { spy :cell_class, new: cell}
-  let(:cell) { double :cell, content: ocean, :content= => nil  }
+  let(:cell_class) { spy :cell_class, new: cell }
+  let(:cell) { double :cell, content: ocean, :content= => nil }
   let(:ocean) { double :ocean }
   let(:battleship) { double :battleship, size: 3 }
 
