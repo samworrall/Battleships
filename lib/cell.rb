@@ -1,3 +1,5 @@
+require_relative 'ocean'
+
 class Cell
   attr_reader :content
 
