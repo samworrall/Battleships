@@ -31,9 +31,15 @@ describe Board do
       expect(subject).to respond_to(:place_ship).with(3).arguments
     end
 
-    it 'calls content= on cell 3 times for a ship of size 3' do
+    it 'calls content= on cell 3 times for a ship of size 3 placed vertically' do
       subject.construct_grid
       subject.place_ship("A1", battleship, "vertical")
+      expect(cell).to have_received(:content=).with(battleship).exactly(3).times
+    end
+
+    it 'calls content= on cell 3 times for a ship of size 3 placed horizontally' do
+      subject.construct_grid
+      subject.place_ship("A1", battleship, "horizontal")
       expect(cell).to have_received(:content=).with(battleship).exactly(3).times
     end
   end
