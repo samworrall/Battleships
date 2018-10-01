@@ -31,7 +31,7 @@ describe Board do
       expect(subject).to respond_to(:place_ship).with(3).arguments
     end
 
-    it 'Replaces cells A1, B1, and C1 content with a ship' do
+    it 'calls content= on cell 3 times for a ship of size 3' do
       subject.construct_grid
       subject.place_ship("A1", battleship, "vertical")
       expect(cell).to have_received(:content=).with(battleship).exactly(3).times
