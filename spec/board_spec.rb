@@ -34,7 +34,7 @@ describe Board do
     it 'Replaces cells A1, B1, and C1 content with a ship' do
       subject.construct_grid
       subject.place_ship("A1", battleship, "vertical")
-      expect(cell).to have_received(:content=).with(battleship)
+      expect(cell).to have_received(:content=).with(battleship).exactly(3).times
     end
   end
 end

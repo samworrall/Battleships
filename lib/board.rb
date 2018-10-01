@@ -18,6 +18,9 @@ class Board
 
   def place_ship(coord, ship, orientation)
     @grid[coord].content = ship
+    keys = @grid.keys
+    index = @grid.find_index { |k,| k == coord }
+    (1...ship.size).each { |n| @grid[keys[index + n*10]].content = ship }
   end
 
 end
