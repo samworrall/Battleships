@@ -38,12 +38,17 @@ class Board
 
   def place_vertically(ship)
     vertical_error_check(ship)
+    vertical_obstruction_check(ship)
     (1...ship.size).each { |n| @grid[@keys[@index + n * 10]].content = ship }
   end
 
   def vertical_error_check(ship)
     raise("There is not enough space for this ship here") if
     @grid[@keys[@index + ((ship.size - 1) * 10)]].nil?
+  end
+
+  def vertical_obstruction_check(ship)
+    (1...ship.size).each { |n| obstruction_error if @grid[@keys[@index + n * 10]].content.instance_of? Battleship  }
   end
 
   def place_horizontally(ship)
@@ -54,6 +59,10 @@ class Board
   def horizontal_error_check(ship)
     raise("There is not enough space for this ship here") if
     @keys[@index + ship.size - 1].split("").first != @y_coord
+  end
+
+  def obstruction_error
+    raise("There is another ship blocking this placement")
   end
 
 end

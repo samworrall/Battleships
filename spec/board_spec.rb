@@ -3,9 +3,11 @@ require 'board'
 describe Board do
   let(:subject) { Board.new(cell_class) }
   let(:cell_class) { spy :cell_class, new: cell }
+  let(:occupied_cell_class) { spy :occupied_cell_class, new: occupied_cell }
   let(:cell) { double :cell, content: ocean, :content= => nil }
-  let(:ocean) { double :ocean }
-  let(:battleship) { double :battleship, size: 3 }
+  let(:occupied_cell) { double :occupied_cell, content: battleship, :content= => nil }
+  let(:ocean) { double :ocean, instance_of?: false }
+  let(:battleship) { double :battleship, size: 3, instance_of?: true }
 
   describe '#grid', :grid do
     it 'Returns an empty hash upon initialisation' do
@@ -61,6 +63,18 @@ describe Board do
       subject.construct_grid
       expect { subject.place_ship("A9", battleship, "horizontal") }
       .to raise_error("There is not enough space for this ship here")
+    end
+
+    context 'Board grid is already occupied by ships' do
+      let(:subject) { Board.new(occupied_cell_class) }
+
+      describe '#place_ship', :place_ship do
+        it 'Throws an error if one or more of the cells is already occipied in the vertical plane' do
+          subject.construct_grid
+          expect { subject.place_ship("A1", battleship, "vertical") }
+          .to raise_error("There is another ship blocking this placement")
+        end
+      end
     end
   end
 end
