@@ -48,7 +48,7 @@ class Board
   end
 
   def vertical_obstruction_check(ship)
-    (1...ship.size).each { |n| obstruction_error if @grid[@keys[@index + n * 10]].content.instance_of? Battleship  }
+    (0...ship.size).each { |n| obstruction_error if @grid[@keys[@index + n * 10]].content.instance_of? Battleship  }
   end
 
   def place_horizontally(ship)
