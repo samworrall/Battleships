@@ -42,5 +42,13 @@ describe Board do
       subject.place_ship("A1", battleship, "horizontal")
       expect(cell).to have_received(:content=).with(battleship).exactly(3).times
     end
+
+    it 'Throws an error if the orientation is not specified correctly' do
+      subject.construct_grid
+      expect { subject.place_ship("A1", battleship, "horizontally") }
+      .to raise_error("Orientation must either be vertical or horizontal")
+      expect { subject.place_ship("A1", battleship, "vertically") }
+      .to raise_error("Orientation must either be vertical or horizontal")
+    end
   end
 end
