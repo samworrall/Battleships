@@ -56,5 +56,11 @@ describe Board do
       expect { subject.place_ship("J1", battleship, "vertical") }
       .to raise_error("There is not enough space for this ship here")
     end
+
+    it 'Throws an error if there is not enough space to place ship horizontally' do
+      subject.construct_grid
+      expect { subject.place_ship("A9", battleship, "horizontal") }
+      .to raise_error("There is not enough space for this ship here")
+    end
   end
 end

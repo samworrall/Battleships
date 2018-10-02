@@ -17,13 +17,16 @@ class Board
   end
 
   def place_ship(coord, ship, orientation)
-    # p coord.split("").first
     check_valid_orientation(orientation)
-    @grid[coord].content = ship
+
+    @y_coord = coord.split("").first
     @keys = @grid.keys
     @index = @grid.find_index { |k,| k == coord }
+
     orientation == "vertical" ?
     place_vertically(ship) : place_horizontally(ship)
+
+    @grid[coord].content = ship
   end
 
   private
@@ -40,11 +43,17 @@ class Board
 
   def vertical_error_check(ship)
     raise("There is not enough space for this ship here") if
-    @grid[@keys[@index + ((ship.size - 1) * 10)]] == nil
+    @grid[@keys[@index + ((ship.size - 1) * 10)]].nil?
   end
 
   def place_horizontally(ship)
+    horizontal_error_check(ship)
     (1...ship.size).each { |n| @grid[@keys[@index + n]].content = ship }
+  end
+
+  def horizontal_error_check(ship)
+    raise("There is not enough space for this ship here") if
+    @keys[@index + ship.size - 1].split("").first != @y_coord
   end
 
 end
