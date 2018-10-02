@@ -50,5 +50,11 @@ describe Board do
       expect { subject.place_ship("A1", battleship, "vertically") }
       .to raise_error("Orientation must either be vertical or horizontal")
     end
+
+    it 'Throws an error if there is not enough space to place ship vertically' do
+      subject.construct_grid
+      expect { subject.place_ship("J1", battleship, "vertical") }
+      .to raise_error("There is not enough space for this ship here")
+    end
   end
 end
