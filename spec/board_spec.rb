@@ -74,6 +74,12 @@ describe Board do
           expect { subject.place_ship("A1", battleship, "vertical") }
           .to raise_error("There is another ship blocking this placement")
         end
+
+        it 'Throws an error if one or more of the cells is already occipied in the horizontal plane' do
+          subject.construct_grid
+          expect { subject.place_ship("A1", battleship, "horizontal") }
+          .to raise_error("There is another ship blocking this placement")
+        end
       end
     end
   end
