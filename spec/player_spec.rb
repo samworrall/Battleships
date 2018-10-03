@@ -1,9 +1,11 @@
 require 'player'
 
 describe Player do
-  let(:subject) { Player.new(ship_class) }
+  let(:subject) { Player.new(ship_class, board_class) }
   let(:ship_class) { double :ship_class, carrier: carrier, battleship: battleship,
                      cruiser: cruiser, submarine: submarine, destroyer: destroyer }
+  let(:board_class) { double :board_class, new: board }
+  let(:board) { double :board }
   let(:carrier) { double :carrier, size: 5 }
   let(:battleship) { double :battleship, size: 4 }
   let(:cruiser) { double :cruiser, size: 3 }
@@ -21,6 +23,12 @@ describe Player do
   describe '#construct_fleet', :construct_fleet do
     it 'Increases the length of fleet array by 5' do
       expect { subject.construct_fleet }.to change {subject.fleet.length }.by(5)
+    end
+  end
+
+  describe '#board', :player_board do
+    it 'Returns the player board' do
+      expect(subject.board).to eq(board)
     end
   end
 end

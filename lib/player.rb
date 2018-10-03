@@ -1,9 +1,10 @@
 class Player
-  attr_accessor :fleet
+  attr_accessor :fleet, :board
 
-  def initialize(ship_class)
+  def initialize(ship_class, board_class)
     @fleet = []
     @ship_class = ship_class
+    @board = board_class.new
   end
 
   def construct_fleet
