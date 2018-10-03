@@ -17,16 +17,22 @@ describe Game do
     end
   end
 
-  describe '#current_turn', :current_turn do
+  describe '#current_player', :current_player do
     it 'Returns player1 at the start of the game' do
-      expect(subject.current_turn).to eq(player1)
+      expect(subject.current_player).to eq(player1)
     end
   end
 
   describe '#end_turn', :end_turn do
-    it 'Changes current_turn to player2' do
+    it 'Changes current_player to player2' do
       subject.end_turn
-      expect(subject.current_turn).to eq(player2)
+      expect(subject.current_player).to eq(player2)
     end
   end
+
+  # describe '#fire_missile', :fire do
+  #   it 'Returns miss' do
+  #     expect(subject.fire_missile("A1")).to eq("miss!")
+  #   end
+  # end
 end
