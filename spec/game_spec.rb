@@ -22,4 +22,11 @@ describe Game do
       expect(subject.current_turn).to eq(player1)
     end
   end
+
+  describe '#end_turn', :end_turn do
+    it 'Changes current_turn to player2' do
+      subject.end_turn
+      expect(subject.current_turn).to eq(player2)
+    end
+  end
 end
