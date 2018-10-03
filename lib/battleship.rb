@@ -1,9 +1,10 @@
 class Battleship
-  attr_reader :size, :hits
+  attr_reader :size, :hits, :placed
 
   def initialize(size)
     @size = size
     @hits = 0
+    @placed = false
   end
 
   def take_hit
@@ -12,6 +13,10 @@ class Battleship
 
   def destroyed?
     @hits == @size
+  end
+
+  def placed?
+    @placed
   end
 
   def self.carrier

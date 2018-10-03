@@ -32,6 +32,12 @@ describe Battleship do
     end
   end
 
+  describe '#placed?' do
+    it 'returns false on initialisation' do
+      expect(subject.placed?).to eq(false)
+    end
+  end
+
   context 'The battleship is a Carrier' do
     let(:subject) { Battleship.carrier }
 
