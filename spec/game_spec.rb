@@ -2,8 +2,11 @@ require 'game'
 
 describe Game do
   let(:subject) { Game.new(player1, player2) }
-  let(:player1) { double :player1 }
-  let(:player2) { double :player2 }
+  let(:player1) { double :player1, board: board1 }
+  let(:player2) { double :player2, board: board1 }
+  let(:board1) { double :board1, grid: {"A1" => cell1} }
+  let(:cell1) { double :cell1, content: ocean, hit?: false, take_hit: nil }
+  let(:ocean) { double :ocean, instance_of?: true }
 
   describe '#player1', :player1 do
     it 'returns player1' do
@@ -37,11 +40,11 @@ describe Game do
     end
   end
 
-  # context 'No ships on either board' do
-  #   describe '#fire_missile', :fire do
-  #     it 'Returns miss' do
-  #       expect(subject.fire_missile("A1")).to eq("miss!")
-  #     end
-  #   end
-  # end
+  context 'No ships on either board' do
+    describe '#fire_missile', :fire do
+      it 'Returns miss' do
+        expect(subject.fire_missile("A1")).to eq("miss!")
+      end
+    end
+  end
 end
