@@ -2,7 +2,7 @@ require 'cell'
 
 describe Cell do
   let(:subject) { Cell.new(ocean) }
-  let(:ocean) { double :ocean }
+  let(:ocean) { spy :ocean }
 
   describe '#content', :content do
     it 'Returns ocean upon initialisation' do
@@ -20,6 +20,11 @@ describe Cell do
     it 'Changes hit? to true' do
       subject.take_hit
       expect(subject.hit?).to eq(true)
+    end
+
+    it 'Calls take_hit on cell content' do
+      subject.take_hit
+      expect(subject.content).to have_received(:take_hit).once
     end
   end
 end

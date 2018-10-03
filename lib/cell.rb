@@ -14,5 +14,6 @@ class Cell
 
   def take_hit
     @hit = true
+    @content.take_hit
   end
 end
