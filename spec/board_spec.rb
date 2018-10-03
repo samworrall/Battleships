@@ -7,7 +7,7 @@ describe Board do
   let(:cell) { double :cell, content: ocean, :content= => nil }
   let(:occupied_cell) { double :occupied_cell, content: battleship, :content= => nil }
   let(:ocean) { double :ocean, instance_of?: false }
-  let(:battleship) { double :battleship, size: 3, instance_of?: true }
+  let(:battleship) { double :battleship, size: 3, instance_of?: true, place: nil }
 
   describe '#grid', :grid do
     it 'Returns an empty hash upon initialisation' do

@@ -40,6 +40,7 @@ class Board
     vertical_error_check(ship)
     vertical_obstruction_check(ship)
     (1...ship.size).each { |n| @grid[@keys[@index + n * 10]].content = ship }
+    ship.place
   end
 
   def vertical_error_check(ship)
@@ -57,6 +58,7 @@ class Board
     horizontal_error_check(ship)
     horizontal_obstruction_check(ship)
     (1...ship.size).each { |n| @grid[@keys[@index + n]].content = ship }
+    ship.place
   end
 
   def horizontal_error_check(ship)
