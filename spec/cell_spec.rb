@@ -9,4 +9,10 @@ describe Cell do
       expect(subject.content).to eq(ocean)
     end
   end
+
+  describe '#hit?', :cell_hit? do
+    it 'Returns false on initialisation' do
+      expect(subject.hit?).to eq(false)
+    end
+  end
 end

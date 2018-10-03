@@ -37,9 +37,11 @@ describe Game do
     end
   end
 
-  # describe '#fire_missile', :fire do
-  #   it 'Returns miss' do
-  #     expect(subject.fire_missile("A1")).to eq("miss!")
+  # context 'No ships on either board' do
+  #   describe '#fire_missile', :fire do
+  #     it 'Returns miss' do
+  #       expect(subject.fire_missile("A1")).to eq("miss!")
+  #     end
   #   end
   # end
 end

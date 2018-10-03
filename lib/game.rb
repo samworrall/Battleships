@@ -13,6 +13,12 @@ class Game
   end
 
   # def fire_missile(coord)
+  #   @other_player.board.grid[coord].content.hit? ? tile_already_hit : hit_target(coord)
+  # end
   #
+  # private
+  #
+  # def hit_target(coord)
+  #   @other_player.board.grid[coord].content.hit
   # end
 end
