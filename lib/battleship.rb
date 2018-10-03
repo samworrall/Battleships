@@ -19,6 +19,10 @@ class Battleship
     @placed
   end
 
+  def place
+    @placed = true
+  end
+
   def self.carrier
     new(5)
   end

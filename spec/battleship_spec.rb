@@ -32,9 +32,16 @@ describe Battleship do
     end
   end
 
-  describe '#placed?' do
+  describe '#placed?', :placed? do
     it 'returns false on initialisation' do
       expect(subject.placed?).to eq(false)
+    end
+  end
+
+  describe '#place', :place do
+    it 'Changed placed? to true' do
+      subject.place
+      expect(subject.placed?).to eq(true)
     end
   end
 
