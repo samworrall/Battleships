@@ -11,4 +11,8 @@ class Cell
   def hit?
     @hit
   end
+
+  def take_hit
+    @hit = true
+  end
 end

@@ -15,4 +15,11 @@ describe Cell do
       expect(subject.hit?).to eq(false)
     end
   end
+
+  describe '#take_hit', :cell_take_hit do
+    it 'Changes hit? to true' do
+      subject.take_hit
+      expect(subject.hit?).to eq(true)
+    end
+  end
 end
