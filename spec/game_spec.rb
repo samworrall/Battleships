@@ -16,4 +16,10 @@ describe Game do
       expect(subject.player2).to eq(player2)
     end
   end
+
+  describe '#current_turn', :current_turn do
+    it 'Returns player1 at the start of the game' do
+      expect(subject.current_turn).to eq(player1)
+    end
+  end
 end
