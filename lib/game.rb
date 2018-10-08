@@ -30,4 +30,8 @@ class Game
   def target_already_hit
     raise("You have already hit this tile!")
   end
+
+  def target_not_yet_hit
+    raise("You have not hit this tile yet!")
+  end
 end

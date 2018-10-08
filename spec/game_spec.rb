@@ -4,10 +4,11 @@ describe Game do
   let(:subject) { Game.new(player1, player2) }
   let(:player1) { double :player1, board: board1 }
   let(:player2) { double :player2, board: board1 }
-  let(:board1) { double :board1, grid: {"A1" => cell1, "A2" => cell2, "A3" => cell3} }
+  let(:board1) { double :board1, grid: {"A1" => cell1, "A2" => cell2, "A3" => cell3, "A4" => cell4} }
   let(:cell1) { double :cell1, content: ocean, hit?: false, take_hit: nil }
   let(:cell2) { double :cell2, content: ocean, hit?: true }
   let(:cell3) { double :cell3, content: ship, hit?: true }
+  let(:cell4) { double :cell4, content: ship, hit?: false }
   let(:ocean) { double :ocean, instance_of?: true }
   let(:ship) { double :ship, instance_of?: false }
 
@@ -56,6 +57,10 @@ describe Game do
 
     it 'Returns Enemy Ship' do
       expect(subject.view_opponent_tile("A3")).to eq("Enemy Ship")
+    end
+
+    it 'Throws an error if the tile being viewed has not been hit' do
+      expect { subject.view_opponent_tile("A4") }.to raise_error("You have not hit this tile yet!")
     end
   end
 
