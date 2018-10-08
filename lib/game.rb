@@ -22,4 +22,8 @@ class Game
     @other_player.board.grid[coord].take_hit
     p (@other_player.board.grid[coord].content.instance_of? Ocean) ? "miss!" : "hit!"
   end
+
+  def target_already_hit
+    raise("You have already hit this tile!")
+  end
 end

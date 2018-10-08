@@ -4,8 +4,9 @@ describe Game do
   let(:subject) { Game.new(player1, player2) }
   let(:player1) { double :player1, board: board1 }
   let(:player2) { double :player2, board: board1 }
-  let(:board1) { double :board1, grid: {"A1" => cell1} }
+  let(:board1) { double :board1, grid: {"A1" => cell1, "A2" => cell2} }
   let(:cell1) { double :cell1, content: ocean, hit?: false, take_hit: nil }
+  let(:cell2) { double :cell2, content: ocean, hit?: true }
   let(:ocean) { double :ocean, instance_of?: true }
 
   describe '#player1', :player1 do
@@ -37,6 +38,12 @@ describe Game do
       subject.end_turn
       expect(subject.current_player).to eq(player2)
       expect(subject.other_player).to eq(player1)
+    end
+  end
+
+  describe '#fire_missile', :fire do
+    it 'Throws an error if that tile has already been hit' do
+      expect { subject.fire_missile("A2") }.to raise_error("You have already hit this tile!")
     end
   end
 
