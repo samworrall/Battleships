@@ -16,6 +16,10 @@ class Game
     @other_player.board.grid[coord].hit? ? target_already_hit : hit_target(coord)
   end
 
+  def view_opponent_tile(coord)
+    p @other_player.board.grid[coord].hit? ? ((@other_player.board.grid[coord].content.instance_of? Ocean) ? "Ocean" : "Enemy Ship" ) : target_not_yet_hit
+  end
+
   private
 
   def hit_target(coord)

@@ -47,6 +47,12 @@ describe Game do
     end
   end
 
+  describe '#view_opponent_tile', :view_opponent_tile do
+    it 'Returns the content of the hit tile' do
+      expect(subject.view_opponent_tile("A2")).to eq("Ocean")
+    end
+  end
+
   context 'No ships on either board' do
     describe '#fire_missile', :fire do
       it 'Returns miss' do
