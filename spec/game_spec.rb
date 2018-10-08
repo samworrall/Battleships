@@ -2,8 +2,8 @@ require 'game'
 
 describe Game do
   let(:subject) { Game.new(player1, player2) }
-  let(:player1) { double :player1, board: board1 }
-  let(:player2) { double :player2, board: board1 }
+  let(:player1) { double :player1, board: board1, fleet: { ship1: unplaced_ship, ship2: unplaced_ship } }
+  let(:player2) { double :player2, board: board1, fleet: { ship1: unplaced_ship, ship2: placed_ship } }
   let(:board1) { double :board1, grid: {"A1" => cell1, "A2" => cell2, "A3" => cell3, "A4" => cell4} }
   let(:cell1) { double :cell1, content: ocean, hit?: false, take_hit: nil }
   let(:cell2) { double :cell2, content: ocean, hit?: true }
@@ -12,6 +12,8 @@ describe Game do
   let(:ocean) { double :ocean, instance_of?: true }
   let(:ship) { double :ship, instance_of?: false, hit?: false }
   let(:ship2) { double :ship2, instance_of?: false, hit?: true }
+  let(:unplaced_ship) { double :unplaced_ship, placed?: false }
+  let(:placed_ship) { double :placed_ship, placed?: true }
 
   describe '#player1', :player1 do
     it 'returns player1' do
@@ -83,6 +85,12 @@ describe Game do
     describe '#fire_missile', :fire do
       it 'Returns miss' do
         expect(subject.fire_missile("A1")).to eq("miss!")
+      end
+    end
+
+    describe '#all_ships_placed?', :all_ships_placed? do
+      it 'Returns false' do
+        expect(subject.all_ships_placed?).to eq(false)
       end
     end
   end
