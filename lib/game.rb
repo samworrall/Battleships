@@ -16,6 +16,10 @@ class Game
     opponent_tile(coord).hit? ? target_already_hit : hit_target(coord)
   end
 
+  def view_my_tile(coord)
+    p my_tile_is_ocean?(coord) ? "Ocean" : "Your Ship"
+  end
+
   def view_opponent_tile(coord)
     p opponent_tile(coord).hit? ?
     (opponent_tile_is_ocean?(coord) ?
@@ -41,7 +45,15 @@ class Game
     @other_player.board.grid[coord]
   end
 
+  def my_tile(coord)
+    @current_player.board.grid[coord]
+  end
+
   def opponent_tile_is_ocean?(coord)
     opponent_tile(coord).content.instance_of? Ocean
+  end
+
+  def my_tile_is_ocean?(coord)
+    my_tile(coord).content.instance_of? Ocean
   end
 end

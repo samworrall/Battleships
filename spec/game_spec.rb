@@ -64,6 +64,16 @@ describe Game do
     end
   end
 
+  describe '#view_my_tile' do
+    it 'Returns Ocean' do
+      expect(subject.view_my_tile("A1")).to eq("Ocean")
+    end
+
+    it 'Returns Your Ship' do
+      expect(subject.view_my_tile("A3")).to eq("Your Ship")
+    end
+  end
+
   context 'No ships on either board' do
     describe '#fire_missile', :fire do
       it 'Returns miss' do
