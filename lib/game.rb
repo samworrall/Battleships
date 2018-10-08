@@ -8,6 +8,11 @@ class Game
     @other_player = player2
   end
 
+  def all_ships_placed?
+    return true if
+    (@current_player.fleet.each { |k, v| return false if !v.placed? } && @other_player.fleet.each { |k, v| return false if !v.placed? })
+  end
+
   def end_turn
     @current_player, @other_player = @other_player, @current_player
   end

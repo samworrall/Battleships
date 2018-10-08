@@ -65,7 +65,7 @@ describe Game do
     end
   end
 
-  describe '#view_my_tile' do
+  describe '#view_my_tile', :view_my_tile do
     it 'Returns Ocean' do
       expect(subject.view_my_tile("A1")).to eq("Ocean")
     end
@@ -83,6 +83,19 @@ describe Game do
     describe '#fire_missile', :fire do
       it 'Returns miss' do
         expect(subject.fire_missile("A1")).to eq("miss!")
+      end
+    end
+  end
+
+  context 'All ships on both boards' do
+    let(:subject) { Game.new(player1, player2) }
+    let(:player1) { double :player1, fleet: { ship1: ship, ship2: ship, ship3: ship } }
+    let(:player2) { double :player2, fleet: { ship1: ship, ship2: ship, ship3: ship } }
+    let(:ship) { double :ship, placed?: true }
+
+    describe '#all_ships_placed?', :all_ships_placed? do
+      it 'Returns true' do
+        expect(subject.all_ships_placed?).to eq(true)
       end
     end
   end
