@@ -4,10 +4,12 @@ describe Game do
   let(:subject) { Game.new(player1, player2) }
   let(:player1) { double :player1, board: board1 }
   let(:player2) { double :player2, board: board1 }
-  let(:board1) { double :board1, grid: {"A1" => cell1, "A2" => cell2} }
+  let(:board1) { double :board1, grid: {"A1" => cell1, "A2" => cell2, "A3" => cell3} }
   let(:cell1) { double :cell1, content: ocean, hit?: false, take_hit: nil }
   let(:cell2) { double :cell2, content: ocean, hit?: true }
+  let(:cell3) { double :cell3, content: ship, hit?: true }
   let(:ocean) { double :ocean, instance_of?: true }
+  let(:ship) { double :ship, instance_of?: false }
 
   describe '#player1', :player1 do
     it 'returns player1' do
@@ -48,8 +50,12 @@ describe Game do
   end
 
   describe '#view_opponent_tile', :view_opponent_tile do
-    it 'Returns the content of the hit tile' do
+    it 'Returns Ocean' do
       expect(subject.view_opponent_tile("A2")).to eq("Ocean")
+    end
+
+    it 'Returns Enemy Ship' do
+      expect(subject.view_opponent_tile("A3")).to eq("Enemy Ship")
     end
   end
 
