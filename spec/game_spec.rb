@@ -7,10 +7,11 @@ describe Game do
   let(:board1) { double :board1, grid: {"A1" => cell1, "A2" => cell2, "A3" => cell3, "A4" => cell4} }
   let(:cell1) { double :cell1, content: ocean, hit?: false, take_hit: nil }
   let(:cell2) { double :cell2, content: ocean, hit?: true }
-  let(:cell3) { double :cell3, content: ship, hit?: true }
+  let(:cell3) { double :cell3, content: ship2, hit?: true }
   let(:cell4) { double :cell4, content: ship, hit?: false }
   let(:ocean) { double :ocean, instance_of?: true }
-  let(:ship) { double :ship, instance_of?: false }
+  let(:ship) { double :ship, instance_of?: false, hit?: false }
+  let(:ship2) { double :ship2, instance_of?: false, hit?: true }
 
   describe '#player1', :player1 do
     it 'returns player1' do
@@ -69,8 +70,12 @@ describe Game do
       expect(subject.view_my_tile("A1")).to eq("Ocean")
     end
 
+    it 'Returns Your Ship(hit)' do
+      expect(subject.view_my_tile("A3")).to eq("Your Ship(hit)")
+    end
+
     it 'Returns Your Ship' do
-      expect(subject.view_my_tile("A3")).to eq("Your Ship")
+      expect(subject.view_my_tile("A4")).to eq("Your Ship")
     end
   end
 

@@ -17,7 +17,8 @@ class Game
   end
 
   def view_my_tile(coord)
-    p my_tile_is_ocean?(coord) ? "Ocean" : "Your Ship"
+    p my_tile_is_ocean?(coord) ? "Ocean" :
+    my_tile(coord).content.hit? ? "Your Ship(hit)" : "Your Ship"
   end
 
   def view_opponent_tile(coord)
