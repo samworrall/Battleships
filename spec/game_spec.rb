@@ -103,5 +103,11 @@ describe Game do
         expect(subject.all_ships_placed?).to eq(true)
       end
     end
+
+    # describe '#game_won?', :game_won? do
+    #   it 'Returns true' do
+    #     expect(subject.game_won?).to eq(true)
+    #   end
+    # end
   end
 end

@@ -6,11 +6,11 @@ describe Player do
                      cruiser: cruiser, submarine: submarine, destroyer: destroyer }
   let(:board_class) { double :board_class, new: board }
   let(:board) { double :board }
-  let(:carrier) { double :carrier, size: 5, placed?: false }
-  let(:battleship) { double :battleship, size: 4, placed?: false }
-  let(:cruiser) { double :cruiser, size: 3, placed?: false }
-  let(:submarine) { double :submarine, size: 3, placed?: false }
-  let(:destroyer) { double :destroyer, size: 2, placed?: false }
+  let(:carrier) { double :carrier, size: 5, placed?: false, destroyed?: false }
+  let(:battleship) { double :battleship, size: 4, placed?: false, destroyed?: false }
+  let(:cruiser) { double :cruiser, size: 3, placed?: false, destroyed?: false }
+  let(:submarine) { double :submarine, size: 3, placed?: false, destroyed?: false }
+  let(:destroyer) { double :destroyer, size: 2, placed?: false, destroyed?: false }
 
 
   describe '#fleet', :fleet do
@@ -36,6 +36,13 @@ describe Player do
     it 'Returns false' do
       subject.construct_fleet
       expect(subject.fleet_placed?).to eq(false)
+    end
+  end
+
+  describe '#fleet_destroyed?', :fleet_destroyed? do
+    it 'Returns false' do
+      subject.construct_fleet
+      expect(subject.fleet_destroyed?).to eq(false)
     end
   end
 

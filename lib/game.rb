@@ -31,6 +31,10 @@ class Game
     "Ocean" : "Enemy Ship" ) : target_not_yet_hit
   end
 
+  # def game_won?
+  #   true
+  # end
+
   private
 
   def hit_target(coord)

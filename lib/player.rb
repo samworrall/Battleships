@@ -19,4 +19,9 @@ class Player
     return true if
     @fleet.each { |k, v| return false if !v.placed? }
   end
+
+  def fleet_destroyed?
+    return true if
+      @fleet.each { |k, v| return false if !v.destroyed? }
+  end
 end
