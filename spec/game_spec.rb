@@ -2,8 +2,8 @@ require 'game'
 
 describe Game do
   let(:subject) { Game.new(player1, player2) }
-  let(:player1) { double :player1, board: board, fleet: { ship1: unplaced_ship, ship2: unplaced_ship } }
-  let(:player2) { double :player2, board: board, fleet: { ship1: unplaced_ship, ship2: placed_ship } }
+  let(:player1) { double :player1, board: board, fleet_placed?: false }
+  let(:player2) { double :player2, board: board, fleet_placed?: false }
   let(:board) { double :board, grid: {"A1" => cell1, "A2" => cell2, "A3" => cell3, "A4" => cell4} }
   let(:cell1) { double :cell1, content: ocean, hit?: false, take_hit: nil }
   let(:cell2) { double :cell2, content: ocean, hit?: true }
@@ -12,8 +12,6 @@ describe Game do
   let(:ocean) { double :ocean, instance_of?: true }
   let(:ship) { double :ship, instance_of?: false, hit?: false }
   let(:ship2) { double :ship2, instance_of?: false, hit?: true }
-  let(:unplaced_ship) { double :unplaced_ship, placed?: false }
-  let(:placed_ship) { double :placed_ship, placed?: true }
 
   describe '#player1', :player1 do
     it 'returns player1' do
@@ -97,9 +95,8 @@ describe Game do
 
   context 'All ships on both boards' do
     let(:subject) { Game.new(player1, player2) }
-    let(:player1) { double :player1, fleet: { ship1: ship, ship2: ship, ship3: ship } }
-    let(:player2) { double :player2, fleet: { ship1: ship, ship2: ship, ship3: ship } }
-    let(:ship) { double :ship, placed?: true }
+    let(:player1) { double :player1, fleet_placed?: true }
+    let(:player2) { double :player2, fleet_placed?: true }
 
     describe '#all_ships_placed?', :all_ships_placed? do
       it 'Returns true' do
