@@ -8,7 +8,7 @@ describe Game do
   let(:cell1) { double :cell1, content: ocean, hit?: false, take_hit: nil }
   let(:cell2) { double :cell2, content: ocean, hit?: true }
   let(:cell3) { double :cell3, content: ship2, hit?: true }
-  let(:cell4) { double :cell4, content: ship, hit?: false }
+  let(:cell4) { double :cell4, content: ship, hit?: false, take_hit: nil }
   let(:ocean) { double :ocean, instance_of?: true }
   let(:ship) { double :ship, instance_of?: false, hit?: false }
   let(:ship2) { double :ship2, instance_of?: false, hit?: true }
@@ -96,11 +96,17 @@ describe Game do
   context 'All ships on both boards' do
     let(:subject) { Game.new(player1, player2) }
     let(:player1) { double :player1, fleet_placed?: true }
-    let(:player2) { double :player2, fleet_placed?: true, fleet_destroyed?: true }
+    let(:player2) { double :player2, fleet_placed?: true, fleet_destroyed?: true, board: board }
 
     describe '#all_ships_placed?', :all_ships_placed? do
       it 'Returns true' do
         expect(subject.all_ships_placed?).to eq(true)
+      end
+    end
+
+    describe '#fire_missile', :fire_missile do
+      it 'Returns hit!' do
+        expect(subject.fire_missile("A4")).to eq("hit!")
       end
     end
 
