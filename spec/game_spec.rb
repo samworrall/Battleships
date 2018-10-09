@@ -96,7 +96,7 @@ describe Game do
   context 'All ships on both boards' do
     let(:subject) { Game.new(player1, player2) }
     let(:player1) { double :player1, fleet_placed?: true }
-    let(:player2) { double :player2, fleet_placed?: true }
+    let(:player2) { double :player2, fleet_placed?: true, fleet_destroyed?: true }
 
     describe '#all_ships_placed?', :all_ships_placed? do
       it 'Returns true' do
@@ -104,10 +104,10 @@ describe Game do
       end
     end
 
-    # describe '#game_won?', :game_won? do
-    #   it 'Returns true' do
-    #     expect(subject.game_won?).to eq(true)
-    #   end
-    # end
+    describe '#game_won?', :game_won? do
+      it 'Returns true' do
+        expect(subject.game_won?).to eq(true)
+      end
+    end
   end
 end

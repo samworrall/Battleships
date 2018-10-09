@@ -31,9 +31,9 @@ class Game
     "Ocean" : "Enemy Ship" ) : target_not_yet_hit
   end
 
-  # def game_won?
-  #   true
-  # end
+  def game_won?
+    @other_player.fleet_destroyed?
+  end
 
   private
 
