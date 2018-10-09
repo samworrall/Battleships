@@ -2,9 +2,9 @@ require 'game'
 
 describe Game do
   let(:subject) { Game.new(player1, player2) }
-  let(:player1) { double :player1, board: board1, fleet: { ship1: unplaced_ship, ship2: unplaced_ship } }
-  let(:player2) { double :player2, board: board1, fleet: { ship1: unplaced_ship, ship2: placed_ship } }
-  let(:board1) { double :board1, grid: {"A1" => cell1, "A2" => cell2, "A3" => cell3, "A4" => cell4} }
+  let(:player1) { double :player1, board: board, fleet: { ship1: unplaced_ship, ship2: unplaced_ship } }
+  let(:player2) { double :player2, board: board, fleet: { ship1: unplaced_ship, ship2: placed_ship } }
+  let(:board) { double :board, grid: {"A1" => cell1, "A2" => cell2, "A3" => cell3, "A4" => cell4} }
   let(:cell1) { double :cell1, content: ocean, hit?: false, take_hit: nil }
   let(:cell2) { double :cell2, content: ocean, hit?: true }
   let(:cell3) { double :cell3, content: ship2, hit?: true }

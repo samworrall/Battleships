@@ -14,4 +14,8 @@ class Player
     @fleet[:submarine] = @ship_class.submarine
     @fleet[:destroyer] = @ship_class.destroyer
   end
+
+  def fleet_placed?
+    @fleet.each { |k, v| return false if !v.placed? }
+  end
 end
