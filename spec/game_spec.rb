@@ -82,7 +82,7 @@ describe Game do
   context 'No ships on either board' do
     describe '#fire_missile', :fire do
       it 'Returns miss' do
-        expect(subject.fire_missile("A1")).to eq("miss!")
+        expect { subject.fire_missile("A1") }.to output("\"miss!\"\n").to_stdout
       end
     end
 
@@ -106,7 +106,12 @@ describe Game do
 
     describe '#fire_missile', :fire_missile do
       it 'Returns hit!' do
-        expect(subject.fire_missile("A4")).to eq("hit!")
+        expect { subject.fire_missile("A4") }.to output("\"hit!\"\n").to_stdout
+      end
+
+      it 'Changes the current player to player2' do
+        subject.fire_missile("A4")
+        expect(subject.current_player).to eq(player2)
       end
     end
 

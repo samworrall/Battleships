@@ -40,6 +40,7 @@ class Game
   def hit_target(coord)
     opponent_tile(coord).take_hit
     p opponent_tile_is_ocean?(coord) ? "miss!" : "hit!"
+    end_turn
   end
 
   def target_already_hit
