@@ -17,11 +17,11 @@ class Player
 
   def fleet_placed?
     return true if
-    @fleet.each { |k, v| return false if !v.placed? }
+    @fleet.each { |_, v| return false unless v.placed? }
   end
 
   def fleet_destroyed?
     return true if
-      @fleet.each { |k, v| return false if !v.destroyed? }
+      @fleet.each { |_, v| return false unless v.destroyed? }
   end
 end

@@ -4,7 +4,7 @@ describe Game do
   let(:subject) { Game.new(player1, player2) }
   let(:player1) { double :player1, board: board, fleet_placed?: false }
   let(:player2) { double :player2, board: board, fleet_placed?: false }
-  let(:board) { double :board, grid: {"A1" => cell1, "A2" => cell2, "A3" => cell3, "A4" => cell4} }
+  let(:board) { double :board, grid: { "A1" => cell1, "A2" => cell2, "A3" => cell3, "A4" => cell4 } }
   let(:cell1) { double :cell1, content: ocean, hit?: false, take_hit: nil }
   let(:cell2) { double :cell2, content: ocean, hit?: true }
   let(:cell3) { double :cell3, content: ship2, hit?: true }

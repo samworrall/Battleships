@@ -28,7 +28,7 @@ class Game
   def view_opponent_tile(coord)
     p opponent_tile(coord).hit? ?
     (opponent_tile_is_ocean?(coord) ?
-    "Ocean" : "Enemy Ship" ) : target_not_yet_hit
+    "Ocean" : "Enemy Ship") : target_not_yet_hit
   end
 
   def game_won?

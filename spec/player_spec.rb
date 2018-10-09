@@ -3,7 +3,8 @@ require 'player'
 describe Player do
   let(:subject) { Player.new(ship_class, board_class) }
   let(:ship_class) { double :ship_class, carrier: carrier, battleship: battleship,
-                     cruiser: cruiser, submarine: submarine, destroyer: destroyer }
+                     cruiser: cruiser, submarine: submarine, destroyer: destroyer
+  }
   let(:board_class) { double :board_class, new: board }
   let(:board) { double :board }
   let(:carrier) { double :carrier, size: 5, placed?: false, destroyed?: false }
@@ -11,7 +12,6 @@ describe Player do
   let(:cruiser) { double :cruiser, size: 3, placed?: false, destroyed?: false }
   let(:submarine) { double :submarine, size: 3, placed?: false, destroyed?: false }
   let(:destroyer) { double :destroyer, size: 2, placed?: false, destroyed?: false }
-
 
   describe '#fleet', :fleet do
     it 'Returns an empty hash upon initialisation' do
@@ -22,7 +22,7 @@ describe Player do
 
   describe '#construct_fleet', :construct_fleet do
     it 'Increases the length of fleet array by 5' do
-      expect { subject.construct_fleet }.to change {subject.fleet.length }.by(5)
+      expect { subject.construct_fleet }.to change { subject.fleet.length }.by(5)
     end
   end
 
