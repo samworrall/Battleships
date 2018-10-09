@@ -47,16 +47,31 @@ describe Player do
   end
 
   context 'All ships are placed' do
-    let(:carrier) { double :carrier, size: 5, placed?: true }
-    let(:battleship) { double :battleship, size: 4, placed?: true }
-    let(:cruiser) { double :cruiser, size: 3, placed?: true }
-    let(:submarine) { double :submarine, size: 3, placed?: true }
-    let(:destroyer) { double :destroyer, size: 2, placed?: true }
+    let(:carrier) { double :carrier, placed?: true }
+    let(:battleship) { double :battleship, placed?: true }
+    let(:cruiser) { double :cruiser, placed?: true }
+    let(:submarine) { double :submarine, placed?: true }
+    let(:destroyer) { double :destroyer, placed?: true }
 
     describe '#fleet_placed?', :fleet_placed? do
       it 'Reuturns true' do
         subject.construct_fleet
         expect(subject.fleet_placed?).to eq(true)
+      end
+    end
+  end
+
+  context 'All ships in fleet are destroyed' do
+    let(:carrier) { double :carrier, destroyed?: true }
+    let(:battleship) { double :battleship, destroyed?: true }
+    let(:cruiser) { double :cruiser, destroyed?: true }
+    let(:submarine) { double :submarine, destroyed?: true }
+    let(:destroyer) { double :destroyer, destroyed?: true }
+
+    describe '#fleet_destroyed?', :fleet_destroyed? do
+      it 'Returns true' do
+        subject.construct_fleet
+        expect(subject.fleet_destroyed?).to eq(true)
       end
     end
   end
