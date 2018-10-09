@@ -16,6 +16,7 @@ class Player
   end
 
   def fleet_placed?
+    return true if
     @fleet.each { |k, v| return false if !v.placed? }
   end
 end

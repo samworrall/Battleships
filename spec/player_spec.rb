@@ -32,10 +32,25 @@ describe Player do
     end
   end
 
-  describe '#fleet_placed?', :fleet_placed do
+  describe '#fleet_placed?', :fleet_placed? do
     it 'Returns false' do
       subject.construct_fleet
       expect(subject.fleet_placed?).to eq(false)
+    end
+  end
+
+  context 'All ships are placed' do
+    let(:carrier) { double :carrier, size: 5, placed?: true }
+    let(:battleship) { double :battleship, size: 4, placed?: true }
+    let(:cruiser) { double :cruiser, size: 3, placed?: true }
+    let(:submarine) { double :submarine, size: 3, placed?: true }
+    let(:destroyer) { double :destroyer, size: 2, placed?: true }
+
+    describe '#fleet_placed?', :fleet_placed? do
+      it 'Reuturns true' do
+        subject.construct_fleet
+        expect(subject.fleet_placed?).to eq(true)
+      end
     end
   end
 end
